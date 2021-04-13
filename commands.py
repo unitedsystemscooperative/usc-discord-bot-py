@@ -9,7 +9,7 @@ def load_commands(bot: Bot):
     """ Loads slash commands for use in the Discord bot"""
     slash = SlashCommand(bot, sync_commands=True)
     test_guild_ids = [181594027945099264]
-    guild_ids = [662439414152167434]
+    guild_ids = [181594027945099264, 662439414152167434]
 
     @slash.slash(
         name="bot_announce_myself",
@@ -36,6 +36,14 @@ def load_commands(bot: Bot):
     async def _fsd_booster(ctx: SlashContext):
         await ctx.send(
             "Here's how to unlock the guardian fsd booster: https://youtu.be/J9C9a00-rkQ"
+        )
+
+    @slash.slash(name="gif_heresy",
+                 description="Stop your heresy",
+                 guild_ids=guild_ids)
+    async def _gif_heresy(ctx: SlashContext):
+        await ctx.send(
+            "https://tenor.com/view/cease-your-heresy-warhammer-40k-gif-19005947"
         )
 
     @slash.slash(
