@@ -4,6 +4,8 @@ from discord.ext.commands.bot import Bot
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_choice, create_option
 
+from mongo import get_value, set_value
+
 
 def load_commands(bot: Bot):
     """ Loads slash commands for use in the Discord bot"""
@@ -11,17 +13,69 @@ def load_commands(bot: Bot):
     test_guild_ids = [181594027945099264]
     guild_ids = [181594027945099264, 662439414152167434]
 
-    @slash.slash(
-        name="bot_announce_myself",
-        description="Can only be used by Admiralfeb. Announces the bot.",
-        guild_ids=test_guild_ids)
-    async def _bot_announce_myself(ctx: SlashContext):
-        author = ctx.author
-        if author.id != 138029803214209025:
-            pass
-        else:
-            embed = discord.Embed(title="Introducing Me!")
-            embed.description = "I'm the USC Discord Bot!\n\nAfter talking to other squads and seeing their bots in action, Admiralfeb made me."
+    @slash.slash(name='botModifyAuthUsers',
+                 description='Add/Delete authorized users for this bot',
+                 guild_ids=guild_ids,
+                 options=[
+                      create_option(name='action',
+                                    description="Add or Delete a user?",
+                                    option_type=3,
+                                    required=True,
+                                    choices=[
+                                         create_choice(
+                                             value='add', name='Add'),
+                                         create_choice(value='delete',
+                                                       name='Delete'),
+                                    ]),
+                      create_option(
+                          name='user',
+                          description='tag the user you wish to change',
+                          option_type=6,
+                          required=True)
+                 ])
+    async def _bot_modify_auth_users(ctx: SlashContext, action: str, user: discord.User):
+        author = ctx.author.id
+        authorized_users: list = get_value('authorized_users')
+
+        # Check if authorized
+        if next((auth_user for auth_user in authorized_users if auth_user['id'] == author), None) is None:
+            await ctx.send('Unauthorized to change authorized users')
+            return
+
+        if action == 'add':
+            # Check if user is present in the list already
+            if next((auth_user for auth_user in authorized_users if auth_user['id'] == user.id), None):
+                await ctx.send(f'{user.display_name} is already in authorized users')
+                return
+
+            new_user = {}
+            new_user['id'] = user.id
+            new_user['name'] = user.name
+            new_user['discriminator'] = user.discriminator
+
+            authorized_users.append(new_user)
+            set_value('authorized_users', authorized_users)
+            await ctx.send(f'{user.display_name} added successfully to authorized users')
+            return
+
+        if action == 'delete':
+            if len(authorized_users) == 1:
+                await ctx.send('Unable to remove user as they are the last one.')
+                return
+
+            user_to_delete = next(
+                (auth_user for auth_user in authorized_users if auth_user['id'] == user.id), None)
+
+            if user_to_delete is None:
+                await ctx.send(f'Unable to Delete: {user.display_name} does not exist authorized users')
+                return
+
+            authorized_users.remove(user_to_delete)
+            set_value('authorized_users', authorized_users)
+            await ctx.send(f'Removed {user.display_name} from authorized users')
+            return
+
+        await ctx.send('Error during authorized users change. Please check your inputs.')
 
     @slash.slash(name='can_i_sc_there', guild_ids=guild_ids)
     async def _can_i_sc_there(ctx: SlashContext):
@@ -30,8 +84,7 @@ def load_commands(bot: Bot):
 
     @slash.slash(
         name='fsd_booster',
-        description=
-        ''' Links to Exegious' video on how to unlock the Guardian FSD Booster ''',
+        description=''' Links to Exegious' video on how to unlock the Guardian FSD Booster ''',
         guild_ids=guild_ids)
     async def _fsd_booster(ctx: SlashContext):
         await ctx.send(
@@ -53,8 +106,7 @@ def load_commands(bot: Bot):
         options=[
             create_option(
                 name='option',
-                description=
-                "Choose what you'd like to know about the Neutron Highway",
+                description="Choose what you'd like to know about the Neutron Highway",
                 option_type=3,
                 required=True,
                 choices=[
