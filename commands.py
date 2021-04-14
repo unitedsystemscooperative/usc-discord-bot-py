@@ -17,65 +17,78 @@ def load_commands(bot: Bot):
                  description='Add/Delete authorized users for this bot',
                  guild_ids=guild_ids,
                  options=[
-                      create_option(name='action',
-                                    description="Add or Delete a user?",
-                                    option_type=3,
-                                    required=True,
-                                    choices=[
-                                         create_choice(
-                                             value='add', name='Add'),
-                                         create_choice(value='delete',
-                                                       name='Delete'),
-                                    ]),
-                      create_option(
-                          name='user',
-                          description='tag the user you wish to change',
-                          option_type=6,
-                          required=True)
+                     create_option(name='action',
+                                   description="Add or Delete a user?",
+                                   option_type=3,
+                                   required=True,
+                                   choices=[
+                                       create_choice(value='add', name='Add'),
+                                       create_choice(value='delete',
+                                                     name='Delete'),
+                                   ]),
+                     create_option(
+                         name='user',
+                         description='tag the user you wish to change',
+                         option_type=6,
+                         required=True)
                  ])
-    async def _bot_modify_auth_users(ctx: SlashContext, action: str, user: discord.User):
-        author = ctx.author.id
+    async def _bot_modify_auth_users(ctx: SlashContext, action: str,
+                                     user: discord.User):
+        author_id = str(ctx.author.id)
         authorized_users: list = get_value('authorized_users')
+        print(author_id)
+        print(authorized_users)
 
         # Check if authorized
-        if next((auth_user for auth_user in authorized_users if auth_user['id'] == author), None) is None:
+        if next(
+            (auth_user
+             for auth_user in authorized_users if auth_user['id'] == author_id),
+                None) is None:
             await ctx.send('Unauthorized to change authorized users')
             return
 
         if action == 'add':
-            # Check if user is present in the list already
-            if next((auth_user for auth_user in authorized_users if auth_user['id'] == user.id), None):
-                await ctx.send(f'{user.display_name} is already in authorized users')
-                return
-
             new_user = {}
-            new_user['id'] = user.id
+            new_user['id'] = str(user.id)
             new_user['name'] = user.name
             new_user['discriminator'] = user.discriminator
 
+            # Check if user is present in the list already
+            if next((auth_user for auth_user in authorized_users
+                     if auth_user['id'] == new_user['id']), None):
+                await ctx.send(
+                    f'{user.display_name} is already in authorized users')
+                return
+
             authorized_users.append(new_user)
             set_value('authorized_users', authorized_users)
-            await ctx.send(f'{user.display_name} added successfully to authorized users')
+            await ctx.send(
+                f'{user.display_name} added successfully to authorized users')
             return
 
         if action == 'delete':
             if len(authorized_users) == 1:
-                await ctx.send('Unable to remove user as they are the last one.')
+                await ctx.send(
+                    'Unable to remove user as they are the last one.')
                 return
 
-            user_to_delete = next(
-                (auth_user for auth_user in authorized_users if auth_user['id'] == user.id), None)
+            user_to_delete = next((auth_user for auth_user in authorized_users
+                                   if auth_user['id'] == user.id), None)
 
             if user_to_delete is None:
-                await ctx.send(f'Unable to Delete: {user.display_name} does not exist authorized users')
+                await ctx.send(
+                    f'Unable to Delete: {user.display_name} does not exist authorized users'
+                )
                 return
 
             authorized_users.remove(user_to_delete)
             set_value('authorized_users', authorized_users)
-            await ctx.send(f'Removed {user.display_name} from authorized users')
+            await ctx.send(f'Removed {user.display_name} from authorized users'
+                           )
             return
 
-        await ctx.send('Error during authorized users change. Please check your inputs.')
+        await ctx.send(
+            'Error during authorized users change. Please check your inputs.')
 
     @slash.slash(name='can_i_sc_there', guild_ids=guild_ids)
     async def _can_i_sc_there(ctx: SlashContext):
@@ -84,7 +97,8 @@ def load_commands(bot: Bot):
 
     @slash.slash(
         name='fsd_booster',
-        description=''' Links to Exegious' video on how to unlock the Guardian FSD Booster ''',
+        description=
+        ''' Links to Exegious' video on how to unlock the Guardian FSD Booster ''',
         guild_ids=guild_ids)
     async def _fsd_booster(ctx: SlashContext):
         await ctx.send(
@@ -106,7 +120,8 @@ def load_commands(bot: Bot):
         options=[
             create_option(
                 name='option',
-                description="Choose what you'd like to know about the Neutron Highway",
+                description=
+                "Choose what you'd like to know about the Neutron Highway",
                 option_type=3,
                 required=True,
                 choices=[
