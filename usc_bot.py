@@ -13,8 +13,12 @@ bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 load_commands(bot)
 
-bot.description = "Being developed"
-
 keep_alive()
+
+
+@bot.event
+async def on_ready():
+    print('Bot Online')
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Eolin's Video"))
 
 bot.run(os.getenv('BOT_TOKEN'))
