@@ -1,10 +1,18 @@
 """ Handles commands for the Discord bot """
+from datetime import datetime
+
 import discord
 from discord.ext.commands.bot import Bot
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_choice, create_option
 
 from mongo import get_value, set_value
+import requests
+import os
+import json
+from ranks import ranks
+
+inara_api_url = 'https://inara.cz/inapi/v1/'
 
 
 def load_commands(bot: Bot):
@@ -81,6 +89,63 @@ def load_commands(bot: Bot):
     async def _can_i_sc_there(ctx: SlashContext):
         await ctx.send(
             "Check this out: http://caniflytothenextstarinelitedangero.us/")
+
+    @slash.slash(name='cmdr',
+                 description="gives a description of the cmdr from inara",
+                 guild_ids=test_guild_ids,
+                 options=[create_option(name='cmdr', description="cmdr name", option_type=3, required=True)])
+    async def _cmdr(ctx: SlashContext, cmdr_name: str):
+        current_time = datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
+        await ctx.defer()
+
+        api_key = os.getenv('INARA_TOKEN', '')
+
+        request_header = {'appName': 'USC Bot', 'appVersion': '1.0.0',
+                          'isBeingDeveloped': 'true', 'APIkey': api_key}
+        request_event = [{'eventName': 'getCommanderProfile',
+                          'eventTimestamp': current_time, 'eventData': {'searchName': cmdr_name}}]
+        data = {'header': request_header, 'events': request_event}
+        json_data = json.dumps(data)
+        response = requests.post(
+            inara_api_url, data=json_data).json()
+
+        response_code: int = response['events'][0]['eventStatus']
+
+        if response_code == 204:
+            await ctx.send("No inara profiles were found")
+            return
+        if response_code == 400:
+            await ctx.send("There was an error executing that command")
+            return
+
+        try:
+
+            cmdr_info = response['events'][0]['eventData']
+            cmdr_ranks = cmdr_info['commanderRanksPilot']
+            embed = discord.Embed(
+                title='Inara Profile', url=cmdr_info['inaraURL'], description=f"Role: {cmdr_info.get('preferredGameRole', 'N/A')}")
+            embed.set_author(name=cmdr_info['commanderName'],
+                             url=cmdr_info['inaraURL'])
+            if 'avatarImageURL' in cmdr_info:
+                embed.set_thumbnail(url=cmdr_info['avatarImageURL'])
+            for cmdr_rank in cmdr_ranks:
+                rank_name: str = cmdr_rank['rankName']
+                rank_value: int = int(cmdr_rank['rankValue'])
+                rank_value_s: str = ranks[rank_name][rank_value]
+                rank_progress = '' if rank_value_s == 'Elite' or rank_value_s == 'King' or rank_value_s == 'Admiral' else f"- {int(float(cmdr_rank['rankProgress']) *100)} %"
+                embed.add_field(name=f"{rank_name.capitalize()} Rank",
+                                value=f"{rank_value_s} {rank_progress}")
+
+            if 'commanderSquadron' in cmdr_info:
+                squad_info = cmdr_info['commanderSquadron']
+                embed.add_field(
+                    name="Squadron", value=f"{squad_info['squadronName']} - {squad_info['inaraURL']}", inline=False)
+
+            embed.set_footer(
+                text=f"Retrieved from Inara at the behest of {ctx.author.display_name}")
+            await ctx.send(embed=embed)
+        except discord.errors.NotFound:
+            print('there was an error with the discord system')
 
     @slash.slash(
         name='fsd_booster',
