@@ -1,8 +1,8 @@
 import discord
-from discord.user import User
 from configs import guild_ids, test_guild_ids
 from discord.ext import commands
 from discord.ext.commands.bot import Bot
+from discord.user import User
 from discord_slash import SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
 
@@ -61,7 +61,7 @@ class EducationalCommands(commands.Cog):
                 await user.send(
                     "Desktop client for neutron routing here: https://github.com/winneon/neutron"
                 )
-            ctx.send("Neutron info sent to the user", hidden=True)
+            await ctx.send("Neutron info sent to the user", hidden=True)
         else:
             if option == 'img':
                 await ctx.send("https://i.imgur.com/gg6n5VM.jpg")
