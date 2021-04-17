@@ -1,9 +1,10 @@
-from mongo import get_value, set_value
+import re
+
+import requests
+from discord import Embed, TextChannel
 from discord.ext import commands, tasks
 from discord.ext.commands.bot import Bot
-from discord import TextChannel, Embed
-import requests
-import re
+from mongo import get_value, set_value
 
 galnet_api = 'https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json'
 
