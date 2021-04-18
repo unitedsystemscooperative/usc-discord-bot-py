@@ -3,12 +3,12 @@ import os
 
 import discord
 from discord.ext import commands
+from discord_slash.client import SlashCommand
 from dotenv import load_dotenv
 
+from cogs import (AdminCommands, EducationalCommands, FunCommands, GalNet,
+                  InaraCommands, Powerplay)
 from keep_alive import keep_alive
-from cogs import AdminCommands, EducationalCommands, FunCommands, InaraCommands, GalNet
-from discord_slash.client import SlashCommand
-from discord_slash import utils
 
 load_dotenv()
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
@@ -19,6 +19,7 @@ bot.add_cog(EducationalCommands(bot))
 bot.add_cog(FunCommands(bot))
 bot.add_cog(InaraCommands(bot))
 bot.add_cog(GalNet(bot))
+bot.add_cog(Powerplay(bot))
 
 
 is_prod = os.getenv("IS_PROD", None)

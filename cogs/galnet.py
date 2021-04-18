@@ -22,7 +22,6 @@ class GalNet(commands.Cog):
     async def watch_galnet(self):
         data = await self.get_new_articles()
         if data:
-            print(data)
             if len(data['articles']) > 0:
                 zeneration_channel: TextChannel = self.bot.get_channel(
                     794228654020231248)
@@ -34,6 +33,8 @@ class GalNet(commands.Cog):
 
                 id = data['articles'][0]['id']
                 set_value('latestGalNet', id)
+            else:
+                print('No further articles')
         else:
             print('No further articles')
 
