@@ -13,8 +13,45 @@ class EducationalCommands(commands.Cog):
         print('Load Educational Commands Cog')
 
     @cog_ext.cog_subcommand(base="edu",
+                            name='engineers-fox',
+                            description="Fox's Guide to unlocking engineers",
+                            guild_ids=guild_ids,
+                            options=[
+                                create_option(
+                                    name='user',
+                                    description="Send this to a cmdr instead of public",
+                                    option_type=6,
+                                    required=False)])
+    async def _engineers_fox(self, ctx: SlashContext, user: User = None):
+        message = "Find Fox's Guide to unlocking engineers: https://www.reddit.com/r/EliteDangerous/comments/merpky/foxs_comprehensive_guide_to_engineer_unlocking/"
+        if user:
+            await user.send(message)
+            await ctx.send('Sent to cmdr', hidden=True)
+            return
+        await ctx.send(message)
+
+    @cog_ext.cog_subcommand(base="edu",
+                            name='engineers-inara',
+                            description="Engineer List on Inara",
+                            guild_ids=guild_ids,
+                            options=[
+                                create_option(
+                                    name='user',
+                                    description="Send this to a cmdr instead of public",
+                                    option_type=6,
+                                    required=False)])
+    async def _engineers_inara(self, ctx: SlashContext, user: User = None):
+        message = "Find where and what each engineer does at: https://inara.cz/galaxy-engineers/"
+        if user:
+            await user.send(message)
+            await ctx.send('Sent to cmdr', hidden=True)
+            return
+        await ctx.send(message)
+
+    @cog_ext.cog_subcommand(base="edu",
                             name='fsd-booster',
                             description=''' Links to Exegious' video on how to unlock the Guardian FSD Booster ''',
+                            guild_ids=guild_ids,
                             options=[
                                 create_option(
                                     name='user',
@@ -32,6 +69,7 @@ class EducationalCommands(commands.Cog):
     @cog_ext.cog_subcommand(base="edu",
                             name='neutron',
                             description='Gives tutorials on how to use the neutron highway',
+                            guild_ids=guild_ids,
                             options=[
                                 create_option(
                                     name='option',
@@ -78,6 +116,7 @@ class EducationalCommands(commands.Cog):
                 )
 
     @cog_ext.cog_subcommand(base='edu', name='promotions', description="how do I get promoted?",
+                            guild_ids=guild_ids,
                             options=[
                                 create_option(
                                     name='user',
@@ -101,3 +140,35 @@ class EducationalCommands(commands.Cog):
             await ctx.send(content='Info sent to user', hidden=True)
         else:
             await ctx.send(embed=embed)
+
+    @cog_ext.cog_subcommand(base='edu', name='scoopable', description="What stars can I scoop?", guild_ids=guild_ids, options=[
+        create_option(
+            name='user',
+            description="Send this to a cmdr instead of public",
+            option_type=6,
+            required=False)
+    ])
+    async def _scoopable(self, ctx: SlashContext, user: User = None):
+        message = "Learn to filter the galaxy map for scoopable stars at: https://confluence.fuelrats.com/pages/releaseview.action?pageId=1507609\n\nOther languages available at: https://confluence.fuelrats.com/display/public/FRKB/KGBFOAM"
+
+        if user:
+            await user.send(message)
+            await ctx.send("Info sent to the user", hidden=True)
+        else:
+            await ctx.send(content=message)
+
+    @cog_ext.cog_subcommand(base='edu', name='websites', description="gives list of 3rd party website", guild_ids=guild_ids, options=[
+        create_option(
+            name='user',
+            description="Send this to a cmdr instead of public",
+            option_type=6,
+            required=False)
+    ])
+    async def _websites(self, ctx: SlashContext, user: User = None):
+        message = "Find mostly anything related to trading, combat and player stats at: https://inara.cz\nFind accurate trading data at: https://eddb.io\nFind accurate exploration data at: https://edsm.net\nBuild ships virtually and test their stats at: https://coriolis.io and https://edsy.org\nFind mining hotspots and sell locations at: https://edtools.cc/miner\nNeutron highway and road to riches at: https://spansh.co.uk\nUseful material finding, fleet carrier calculators, and more at: https://cmdrs-toolbox.com/\nNeed fuel? https://fuelrats.com"
+
+        if user:
+            await user.send(message)
+            await ctx.send("Info sent to the user", hidden=True)
+        else:
+            await ctx.send(content=message)

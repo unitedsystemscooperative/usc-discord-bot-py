@@ -1,4 +1,5 @@
 """ Discord Bot entrypoint """
+from cogs.bgs import BGSCog
 import os
 
 import discord
@@ -7,7 +8,7 @@ from discord_slash.client import SlashCommand
 from dotenv import load_dotenv
 
 from cogs import (AdminCommands, EducationalCommands, FunCommands, GalNet,
-                  InaraCommands, Powerplay)
+                  InaraCommands, Powerplay, UtilCommands)
 from keep_alive import keep_alive
 
 load_dotenv()
@@ -18,6 +19,8 @@ bot.add_cog(AdminCommands(bot))
 bot.add_cog(EducationalCommands(bot))
 bot.add_cog(FunCommands(bot))
 bot.add_cog(InaraCommands(bot))
+bot.add_cog(UtilCommands(bot))
+bot.add_cog(BGSCog(bot))
 bot.add_cog(GalNet(bot))
 bot.add_cog(Powerplay(bot))
 
