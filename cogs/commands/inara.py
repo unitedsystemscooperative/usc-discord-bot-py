@@ -24,7 +24,7 @@ class InaraCommands(commands.Cog):
                        description="gives a description of the cmdr from inara",
                        options=[create_option(
                            name='cmdr', description="cmdr name", option_type=3, required=True)])
-    async def _cmdr(self, ctx: SlashContext, cmdr_name: str):
+    async def _cmdr(self, ctx: SlashContext, cmdr: str):
         current_time = datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
         await ctx.defer()
 
@@ -33,7 +33,7 @@ class InaraCommands(commands.Cog):
         request_header = {'appName': 'USC Bot', 'appVersion': '1.0.0',
                           'isBeingDeveloped': 'true', 'APIkey': api_key}
         request_event = [{'eventName': 'getCommanderProfile',
-                          'eventTimestamp': current_time, 'eventData': {'searchName': cmdr_name}}]
+                          'eventTimestamp': current_time, 'eventData': {'searchName': cmdr}}]
         data = {'header': request_header, 'events': request_event}
         json_data = json.dumps(data)
         response = requests.post(
@@ -79,7 +79,7 @@ class InaraCommands(commands.Cog):
     @cog_ext.cog_slash(name="squadron",
                        description="gives in-game squadron and suggests inara",
                        options=[create_option('user', description='user to send to', option_type=6, required=False)])
-    async def _squadron(self, ctx: SlashContext, user: User=None):
+    async def _squadron(self, ctx: SlashContext, user: User = None):
         message = "To join the squadron, go to your right hand panel, click on the squadron button, search **USPC** in the search bar, and you should find us!\n\nAfter you've joined in-game, you are also free to join our inara squadron!\nhttps://inara.cz/squadron/7028/"
         if user:
             user.send(message)
