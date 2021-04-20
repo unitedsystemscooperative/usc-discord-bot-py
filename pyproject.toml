@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "usc-discord-bot"
+version = "0.1.0"
+description = ""
+authors = ["Zachary Bryant <Zachary@admiralfeb.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+"discord.py" = "^1.7.1"
+discord-py-slash-command = "^1.1.2"
+pymongo = "^3.11.3"
+dnspython = "^2.1.0"
+python-dotenv = "^0.17.0"
+python-socketio = {extras = ["client"], version = "^5.2.1"}
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.7.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
