@@ -1,5 +1,4 @@
 """ Discord Bot entrypoint """
-from cogs.bgs import BGSCog
 import os
 
 import discord
@@ -7,9 +6,9 @@ from discord.ext import commands
 from discord_slash.client import SlashCommand
 from dotenv import load_dotenv
 
-from cogs import (AdminCommands, EducationalCommands, FunCommands, GalNet,
-                  InaraCommands, Powerplay, UtilCommands)
-# from keep_alive import keep_alive
+from cogs import (AdminCommands, BGSCog, EducationalCommands, FunCommands,
+                  GalNet, InaraCommands, Powerplay, UtilCommands)
+
 
 load_dotenv()
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
@@ -23,11 +22,6 @@ bot.add_cog(UtilCommands(bot))
 bot.add_cog(BGSCog(bot))
 bot.add_cog(GalNet(bot))
 bot.add_cog(Powerplay(bot))
-
-
-# is_prod = os.getenv("IS_PROD", None)
-# if is_prod:
-#     keep_alive()
 
 
 @bot.event
