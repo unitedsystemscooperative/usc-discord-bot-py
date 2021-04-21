@@ -43,6 +43,28 @@ ranks = {
         "Legend",
         "Elite"
     ],
+    "exobiologist": [
+        "Directionless",
+        "Mostly Directionless",
+        "Compiler",
+        "Collector",
+        "Cataloguer",
+        "Taxonomist",
+        "Ecologist",
+        "Geneticist",
+        "Elite"
+    ],
+    "mercenary": [
+        "Defenceless",
+        "Mostly Defenceless",
+        "Rookie",
+        "Soldier",
+        "Gunslinger",
+        "Warrior",
+        "Gladiator",
+        "Deadeye",
+        "Elite"
+    ],
     "empire": [
         "None",
         "Outsider",

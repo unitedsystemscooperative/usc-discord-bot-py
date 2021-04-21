@@ -5,6 +5,7 @@ from discord.ext.commands.bot import Bot
 from discord.user import User
 from discord_slash import SlashContext, cog_ext
 from discord_slash.utils.manage_commands import create_choice, create_option
+from ranks import ranks
 
 
 class EducationalCommands(commands.Cog):
@@ -140,6 +141,46 @@ class EducationalCommands(commands.Cog):
             await ctx.send(content='Info sent to user', hidden=True)
         else:
             await ctx.send(embed=embed)
+
+    @cog_ext.cog_subcommand(base='edu', name='ranks',
+                            description='What are the ranks?', guild_ids=guild_ids, options=[
+                                create_option(name='rank_type', description='Rank to see', option_type=3, required=True, choices=[
+                                    create_choice(
+                                        'combat', 'Combat - Ship only'),
+                                    create_choice(
+                                        'trade', 'Trade - Ship only'),
+                                    create_choice(
+                                        'exploration', 'Exploration - Ship only'),
+                                    create_choice('cqc', 'CQC - Ship only'),
+                                    create_choice('exobiologist',
+                                                  'Exobiologist - Foot only'),
+                                    create_choice(
+                                        'mercenary', 'Mercenary - Foot only'),
+                                    create_choice('empire', 'Imperial Navy'),
+                                    create_choice(
+                                        'federation', 'Federation Navy'),
+                                ]),
+                                create_option(
+                                    name='user',
+                                    description="Send this to a cmdr instead of public",
+                                    option_type=6,
+                                    required=False)
+                            ])
+    async def _ranks(self, ctx: SlashContext, rank: str, user: User = None):
+        rank_list = ranks.get(rank, None)
+        if rank_list is None:
+            await ctx.send("That rank does not exist", hidden=True)
+        else:
+            embed = discord.Embed(
+                title="Ranks", description="Listed from lowest to highest")
+            rank_str = '\n'.join(rank_list)
+            embed.add_field(name=rank.capitalize(), value=rank_str)
+
+            if user:
+                await user.send(embed=embed)
+                await ctx.send('Info sent to the user', hidden=True)
+            else:
+                await ctx.send(embed=embed)
 
     @cog_ext.cog_subcommand(base='edu', name='scoopable', description="What stars can I scoop?", guild_ids=guild_ids, options=[
         create_option(
