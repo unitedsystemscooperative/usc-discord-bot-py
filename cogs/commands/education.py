@@ -166,15 +166,15 @@ class EducationalCommands(commands.Cog):
                                     option_type=6,
                                     required=False)
                             ])
-    async def _ranks(self, ctx: SlashContext, rank: str, user: User = None):
-        rank_list = ranks.get(rank, None)
+    async def _ranks(self, ctx: SlashContext, rank_type: str, user: User = None):
+        rank_list = ranks.get(rank_type, None)
         if rank_list is None:
             await ctx.send("That rank does not exist", hidden=True)
         else:
             embed = discord.Embed(
                 title="Ranks", description="Listed from lowest to highest")
             rank_str = '\n'.join(rank_list)
-            embed.add_field(name=rank.capitalize(), value=rank_str)
+            embed.add_field(name=rank_type.capitalize(), value=rank_str)
 
             if user:
                 await user.send(embed=embed)
