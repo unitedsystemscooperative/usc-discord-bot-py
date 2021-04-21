@@ -82,7 +82,7 @@ class InaraCommands(commands.Cog):
     async def _squadron(self, ctx: SlashContext, user: User = None):
         message = "To join the squadron, go to your right hand panel, click on the squadron button, search **USPC** in the search bar, and you should find us!\n\nAfter you've joined in-game, you are also free to join our inara squadron!\nhttps://inara.cz/squadron/7028/"
         if user:
-            user.send(message)
-            ctx.send('message sent to user', hidden=True)
+            await user.send(message)
+            await ctx.send('message sent to user', hidden=True)
         else:
             await ctx.send(message)
