@@ -14,6 +14,28 @@ class EducationalCommands(commands.Cog):
         print('Load Educational Commands Cog')
 
     @cog_ext.cog_subcommand(base="edu",
+                            name='combat-logging',
+                            description="Get info on what is considered Combat Logging",
+                            guild_ids=guild_ids,
+                            options=[
+                                create_option(
+                                    name='user',
+                                    description="Send this to a cmdr instead of public",
+                                    option_type=6,
+                                    required=False)])
+    async def _combat_logging(self, ctx: SlashContext, user: User = None):
+        embed = discord.Embed(title="What is Combat Logging?")
+        embed.description = "Combat Logging is improperly exiting gameplay (via menu, alt+F4, pulling a plug, etc) while in combat.\n\n"\
+            "FDev is very strict on this and it can result in a ban.\n\n"\
+            "While FDev does not consider logging to menu as 'Combat Logging', the Elite: Dangerous community does.\n\n"\
+            "Combat Logging is against the rules of USC and can result in a kick or ban."
+        if user:
+            await user.send(embed=embed)
+            await ctx.send('Sent to cmdr', hidden=True)
+            return
+        await ctx.send(embed=embed)
+
+    @cog_ext.cog_subcommand(base="edu",
                             name='engineers-fox',
                             description="Fox's Guide to unlocking engineers",
                             guild_ids=guild_ids,
