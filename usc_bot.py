@@ -6,7 +6,7 @@ from discord.ext import commands
 from discord_slash.client import SlashCommand
 from dotenv import load_dotenv
 
-from cogs import (AdminCommands, BGSCog, EducationalCommands, FunCommands,
+from cogs import (AdminCommands, BGSCog, DevCommands, EducationalCommands, FunCommands,
                   GalNet, InaraCommands, Powerplay, UtilCommands)
 
 
@@ -15,6 +15,7 @@ bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 slash = SlashCommand(bot, override_type=True, sync_commands=True)
 
 bot.add_cog(AdminCommands(bot))
+bot.add_cog(DevCommands(bot))
 bot.add_cog(EducationalCommands(bot))
 bot.add_cog(FunCommands(bot))
 bot.add_cog(InaraCommands(bot))

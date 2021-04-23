@@ -1,4 +1,5 @@
 {
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "python.pythonPath": "/Users/admiralfeb/source/usc-discord-bot/.venv/bin/python3.9"
 }
