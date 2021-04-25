@@ -22,16 +22,17 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Deploy to Heroku Using Docker
-       # You may pin to the exact commit or the version.
-       # uses: mtsmachado8/heroku-deploy@5bf18e5f6160beaccc01c678d0aaa81963434e74
-        uses: mtsmachado8/heroku-deploy@v2.0.3
+      - name: Build, Push and Release a Docker container to Heroku.
+      # You may pin to the exact commit or the version.
+      # uses: gonuit/heroku-docker-deploy@9ab97585f979857642d66612a2ae4062b3347d53
+        uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          # Email Linked to your Heroku Account
+          # Name of the heroku application to which the build is to be sent.
+          heroku_app_name: usc-bot 
+          # The email address associated with your Heroku account.
           email: ${{secrets.HEROKU_EMAIL}}
-          # Your Heroku API Key
-          api_key: ${{ secrets.HEROKU_API }}
-          # Your Heroku App Name
-          app_name: usc-bot
+          # Heroku API key associated with provided user's email.
+          heroku_api_key: ${{secrets.HEROKU_API}}
+          # Select process type for wich you want docker container to be uploaded. [default=web]
           process_type: worker
       
