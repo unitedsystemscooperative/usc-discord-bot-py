@@ -12,5 +12,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "python" ]
-CMD [ "usc_bot.py" ]
+CMD python usc_bot.py
