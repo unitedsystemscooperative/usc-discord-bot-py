@@ -33,4 +33,5 @@ jobs:
           api_key: ${{ secrets.HEROKU_API }}
           # Your Heroku App Name
           app_name: usc-bot
+          process_type: worker
       
