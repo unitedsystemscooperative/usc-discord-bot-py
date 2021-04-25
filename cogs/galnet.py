@@ -6,7 +6,7 @@ from discord.ext import commands, tasks
 from discord.ext.commands.bot import Bot
 from mongo import get_value, set_value
 
-galnet_api = 'https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json'
+GALNET_API = 'https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json'
 
 
 class GalNet(commands.Cog):
@@ -23,13 +23,17 @@ class GalNet(commands.Cog):
         data = await self.get_new_articles()
         if data:
             if len(data['articles']) > 0:
-                zeneration_channel: TextChannel = self.bot.get_channel(
-                    794228654020231248)
-                for article in data['articles']:
-                    embed = Embed(
-                        title=article['title'], description=article['body'])
-                    embed.set_footer(text=article['date'])
-                    await zeneration_channel.send(embed=embed)
+                channels_to_ping: list[str] = get_value('galnetChannels')
+
+                for channel_to_ping in channels_to_ping:
+                    channel: TextChannel = self.bot.get_channel(
+                        int(channel_to_ping))
+
+                    for article in data['articles']:
+                        embed = Embed(
+                            title=article['title'], description=article['body'])
+                        embed.set_footer(text=article['date'])
+                        await channel.send(embed=embed)
 
                 id = data['articles'][0]['id']
                 set_value('latestGalNet', id)
@@ -57,7 +61,7 @@ class GalNet(commands.Cog):
         return data
 
     async def get_new_articles(self):
-        unprocessed_data = requests.get(galnet_api).json()
+        unprocessed_data = requests.get(GALNET_API).json()
         latest_id = get_value('latestGalNet')
 
         processed_data = map(self.process_data, unprocessed_data)
