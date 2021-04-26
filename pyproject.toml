@@ -11,6 +11,7 @@ discord-py-slash-command = "^1.1.2"
 python-dotenv = "^0.17.0"
 python-socketio = {extras = ["client"], version = "^5.2.1"}
 pymongo = {extras = ["srv"], version = "^3.11.3"}
+bugsnag = "^4.0.2"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.7.4"

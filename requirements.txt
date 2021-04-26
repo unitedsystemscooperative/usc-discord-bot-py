@@ -45,6 +45,9 @@ attrs==20.3.0; python_version >= "3.6" and python_full_version >= "3.5.3" \
 bidict==0.21.2; python_version >= "3.6" \
     --hash=sha256:929d056e8d0d9b17ceda20ba5b24ac388e2a4d39802b87f9f4d3f45ecba070bf \
     --hash=sha256:4fa46f7ff96dc244abfc437383d987404ae861df797e2fd5b190e233c302be09
+bugsnag==4.0.2; python_version >= "3.5" and python_version < "4" \
+    --hash=sha256:93d061d945e107fc021f6f5ca792b66efc310c16751cd6467544c2632047d00d \
+    --hash=sha256:7a49dacf055a8c6dda4ce714acd91fabe9546f1ad826276918a26603a8b5489a
 certifi==2020.12.5; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" \
     --hash=sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830 \
     --hash=sha256:1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c
@@ -188,6 +191,9 @@ typing-extensions==3.7.4.3; python_version >= "3.6" and python_full_version >= "
 urllib3==1.26.4; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version < "4" \
     --hash=sha256:2f4da4594db7e1e110a944bb1b551fdf4e6c136ad42e4234131391e21eb5b0df \
     --hash=sha256:e7b021f7241115872f92f43c6508082facffbd1c048e3c6e2bb9c2a157e28937
+webob==1.8.7; python_version >= "3.5" and python_full_version < "3.0.0" and python_version < "4" or python_version >= "3.5" and python_version < "4" and python_full_version >= "3.3.0" \
+    --hash=sha256:73aae30359291c14fa3b956f8b5ca31960e420c28c1bec002547fb04928cf89b \
+    --hash=sha256:b64ef5141be559cfade448f044fa45c2260351edcb6a8ef6b7e00c7dcef0c323
 websocket-client==0.58.0; python_version >= "2.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" \
     --hash=sha256:44b5df8f08c74c3d82d28100fdc81f4536809ce98a17f0757557813275fbb663 \
     --hash=sha256:63509b41d158ae5b7f67eb4ad20fecbb4eee99434e73e140354dc3ff8e09716f

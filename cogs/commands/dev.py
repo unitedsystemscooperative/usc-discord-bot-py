@@ -1,5 +1,5 @@
 import discord
-from configs import guild_ids
+from configs import guild_ids, test_guild_ids
 from discord.ext import commands
 from discord.ext.commands.bot import Bot
 from discord.user import User
@@ -49,3 +49,7 @@ class DevCommands(commands.Cog):
             await ctx.send('Sent to cmdr', hidden=True)
         else:
             await ctx.send(message)
+
+    @cog_ext.cog_subcommand(base='dev', name='test_exception', description='sends an exception', guild_ids=test_guild_ids)
+    async def _dev_test_exception(self, ctx: SlashContext):
+        raise Exception('test exception from command', ctx)
