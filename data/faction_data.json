@@ -1,0 +1,457 @@
+{
+    "docs": [
+        {
+            "_id": "5e2635634093887584f8a261",
+            "__v": 0,
+            "allegiance": "independent",
+            "eddb_id": 77033,
+            "faction_presence": [
+                {
+                    "system_name": "Arugbal",
+                    "system_name_lower": "arugbal",
+                    "system_id": "5a271f5d53582c78c9c62bec",
+                    "state": "boom",
+                    "influence": 0.639165,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "boom"
+                        },
+                        {
+                            "state": "civilliberty"
+                        }
+                    ],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-25T14:18:16.000Z"
+                },
+                {
+                    "system_name": "HIP 3633",
+                    "system_name_lower": "hip 3633",
+                    "system_id": "59eed4e6d22c775be07dfde8",
+                    "state": "civilliberty",
+                    "influence": 0.469,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-25T12:22:46.000Z"
+                },
+                {
+                    "system_name": "Luchunza",
+                    "system_name_lower": "luchunza",
+                    "system_id": "59ecf6eed22c775be0716960",
+                    "state": "none",
+                    "influence": 0.127255,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-25T11:14:40.000Z"
+                },
+                {
+                    "system_name": "Bolonaz",
+                    "system_name_lower": "bolonaz",
+                    "system_id": "59ef80b3d22c775be07f8376",
+                    "state": "expansion",
+                    "influence": 0.090367,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "expansion"
+                        }
+                    ],
+                    "pending_states": [],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-27T01:49:17.000Z"
+                },
+                {
+                    "system_name": "HIP 6439",
+                    "system_name_lower": "hip 6439",
+                    "system_id": "59f51f43d22c775be0680dfa",
+                    "state": "none",
+                    "influence": 0.140578,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [],
+                    "recovering_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "conflicts": [],
+                    "updated_at": "2021-04-20T12:27:21.000Z"
+                },
+                {
+                    "system_name": "HIP 4120",
+                    "system_name_lower": "hip 4120",
+                    "system_id": "59ef4cadd22c775be07eeab5",
+                    "state": "none",
+                    "influence": 0.762238,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-22T16:24:38.000Z"
+                },
+                {
+                    "system_name": "Audheim",
+                    "system_name_lower": "audheim",
+                    "system_id": "59ebba85d22c775be001dc01",
+                    "state": "civilliberty",
+                    "influence": 0.149149,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-25T14:10:01.000Z"
+                },
+                {
+                    "system_name": "79 Psi-2 Piscium",
+                    "system_name_lower": "79 psi-2 piscium",
+                    "system_id": "59eb1285d22c775be0b7d871",
+                    "state": "expansion",
+                    "influence": 0.089,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "expansion"
+                        }
+                    ],
+                    "pending_states": [],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-26T20:22:11.000Z"
+                },
+                {
+                    "system_name": "HIP 3161",
+                    "system_name_lower": "hip 3161",
+                    "system_id": "59fd0195d22c775be05153ac",
+                    "state": "none",
+                    "influence": 0.374251,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [],
+                    "recovering_states": [
+                        {
+                            "state": "drought",
+                            "trend": 0
+                        },
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "conflicts": [],
+                    "updated_at": "2021-03-26T02:40:25.000Z"
+                },
+                {
+                    "system_name": "HIP 2828",
+                    "system_name_lower": "hip 2828",
+                    "system_id": "59f176acd22c775be0a1eb25",
+                    "state": "none",
+                    "influence": 0.115115,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [
+                        {
+                            "state": "war",
+                            "trend": 0
+                        }
+                    ],
+                    "conflicts": [
+                        {
+                            "type": "war",
+                            "status": "",
+                            "opponent_name": "Sapere Aude",
+                            "opponent_name_lower": "sapere aude",
+                            "opponent_faction_id": "5da04b26209f6d331657f105",
+                            "station_id": null,
+                            "stake": "Hugh Vista",
+                            "stake_lower": "hugh vista",
+                            "days_won": 0
+                        }
+                    ],
+                    "updated_at": "2021-04-26T15:09:59.000Z"
+                },
+                {
+                    "system_name": "Bibaridji",
+                    "system_name_lower": "bibaridji",
+                    "system_id": "5a07ad16d22c775be06ef4c9",
+                    "state": "expansion",
+                    "influence": 0.887776,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "civilliberty"
+                        },
+                        {
+                            "state": "expansion"
+                        }
+                    ],
+                    "pending_states": [],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-26T19:55:24.000Z"
+                },
+                {
+                    "system_name": "Nan Yamanes",
+                    "system_name_lower": "nan yamanes",
+                    "system_id": "59eb3021d22c775be0b83789",
+                    "state": "war",
+                    "influence": 0.085256,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "war"
+                        }
+                    ],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [
+                        {
+                            "type": "war",
+                            "status": "active",
+                            "opponent_name": "Nan Yamanes Transport Corporation",
+                            "opponent_name_lower": "nan yamanes transport corporation",
+                            "opponent_faction_id": "59eb1285d22c775be0b7d891",
+                            "station_id": null,
+                            "stake": "",
+                            "stake_lower": "",
+                            "days_won": 0
+                        }
+                    ],
+                    "updated_at": "2021-04-26T09:50:49.000Z"
+                },
+                {
+                    "system_name": "Pegasi Sector JW-W c1-23",
+                    "system_name_lower": "pegasi sector jw-w c1-23",
+                    "system_id": "5a283b3353582c78c9e522d5",
+                    "state": "boom",
+                    "influence": 0.47053,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "boom"
+                        },
+                        {
+                            "state": "civilliberty"
+                        }
+                    ],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [
+                        {
+                            "state": "publicholiday",
+                            "trend": 0
+                        }
+                    ],
+                    "conflicts": [],
+                    "updated_at": "2021-04-25T15:23:50.000Z"
+                },
+                {
+                    "system_name": "Pegasi Sector PH-V b2-0",
+                    "system_name_lower": "pegasi sector ph-v b2-0",
+                    "system_id": "59f87074d22c775be0adc420",
+                    "state": "none",
+                    "influence": 0.327,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [
+                        {
+                            "state": "publicholiday",
+                            "trend": 0
+                        }
+                    ],
+                    "conflicts": [],
+                    "updated_at": "2021-04-24T16:05:21.000Z"
+                },
+                {
+                    "system_name": "Ogowen",
+                    "system_name_lower": "ogowen",
+                    "system_id": "59eb6e0dd22c775be0b96f09",
+                    "state": "war",
+                    "influence": 0.14,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "expansion"
+                        },
+                        {
+                            "state": "war"
+                        }
+                    ],
+                    "pending_states": [],
+                    "recovering_states": [],
+                    "conflicts": [
+                        {
+                            "type": "war",
+                            "status": "active",
+                            "opponent_name": "Ogowen Services",
+                            "opponent_name_lower": "ogowen services",
+                            "opponent_faction_id": "59eb6e0ed22c775be0b96f31",
+                            "station_id": null,
+                            "stake": "",
+                            "stake_lower": "",
+                            "days_won": 1
+                        }
+                    ],
+                    "updated_at": "2021-04-26T21:52:55.000Z"
+                },
+                {
+                    "system_name": "Mono",
+                    "system_name_lower": "mono",
+                    "system_id": "59ed10acd22c775be0a0b324",
+                    "state": "civilliberty",
+                    "influence": 0.836147,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "civilliberty"
+                        }
+                    ],
+                    "pending_states": [],
+                    "recovering_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "conflicts": [],
+                    "updated_at": "2021-04-06T17:36:19.000Z"
+                },
+                {
+                    "system_name": "Pegasi Sector IG-X b1-1",
+                    "system_name_lower": "pegasi sector ig-x b1-1",
+                    "system_id": "59edc3a6d22c775be0e73576",
+                    "state": "boom",
+                    "influence": 0.218781,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-25T15:39:20.000Z"
+                },
+                {
+                    "system_name": "Neris",
+                    "system_name_lower": "neris",
+                    "system_id": "59fcad88d22c775be050361c",
+                    "state": "none",
+                    "influence": 0.141294,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [],
+                    "pending_states": [
+                        {
+                            "state": "expansion",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [],
+                    "updated_at": "2021-04-25T22:35:32.000Z"
+                },
+                {
+                    "system_name": "Yurong",
+                    "system_name_lower": "yurong",
+                    "system_id": "59f9c9ffd22c775be0486fa2",
+                    "state": "expansion",
+                    "influence": 0.37037,
+                    "happiness": "$faction_happinessband2;",
+                    "active_states": [
+                        {
+                            "state": "expansion"
+                        }
+                    ],
+                    "pending_states": [
+                        {
+                            "state": "war",
+                            "trend": 0
+                        }
+                    ],
+                    "recovering_states": [],
+                    "conflicts": [
+                        {
+                            "type": "war",
+                            "status": "pending",
+                            "opponent_name": "Aristocrats of Yurong",
+                            "opponent_name_lower": "aristocrats of yurong",
+                            "opponent_faction_id": "59f9c9ffd22c775be0486fb0",
+                            "station_id": null,
+                            "stake": "",
+                            "stake_lower": "",
+                            "days_won": 0
+                        }
+                    ],
+                    "updated_at": "2021-04-27T05:01:21.000Z"
+                }
+            ],
+            "government": "cooperative",
+            "name": "United Systems Cooperative",
+            "name_lower": "united systems cooperative",
+            "updated_at": "2021-04-27T05:01:21.000Z"
+        }
+    ],
+    "total": 1,
+    "limit": 10,
+    "page": 1,
+    "pages": 1,
+    "pagingCounter": 1,
+    "hasPrevPage": false,
+    "hasNextPage": false,
+    "prevPage": null,
+    "nextPage": null
+}
