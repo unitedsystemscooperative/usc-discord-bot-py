@@ -2,6 +2,7 @@ import discord
 from discord.channel import TextChannel
 from discord.embeds import Embed
 from discord.message import Message
+from discord.reaction import Reaction
 from configs import guild_ids, test_guild_ids
 from discord.ext import commands
 from discord.ext.commands.bot import Bot
@@ -42,3 +43,12 @@ class UtilCommands(commands.Cog):
             await ctx.send('done', hidden=True)
         else:
             await ctx.send('No embeds found', hidden=True)
+
+    @cog_ext.cog_subcommand(base="util", name="poll_show",
+                            description="Shows the results of a poll", guild_ids=guild_ids,
+                            options=[create_option(name='messageID', description='ID of the message', option_type=3, required=True),
+                                     create_option(name='channel', description='Channel the message was in', option_type=7, required=True)])
+    async def _poll_show(self, ctx: SlashContext, messageId: int, channel: discord.TextChannel):
+        message: Message = await channel.fetch_message(messageId)
+        embeds: list[Embed] = message.embeds
+        reactions: list[Reaction] = message.reactions
