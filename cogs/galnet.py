@@ -50,7 +50,7 @@ class GalNet(commands.Cog):
     def process_data(self, data):
         updated_string = data['body']
         updated_string = re.sub('<p>', '', updated_string)
-        updated_string = re.sub('<br \/>', '', updated_string)
+        updated_string = re.sub(r'<br \/>', '', updated_string)
         updated_string = re.sub('</p>', '', updated_string)
         updated_string = re.sub('\n$', '', updated_string)
         updated_string = re.sub('\n', '\n> ', updated_string)
@@ -62,11 +62,11 @@ class GalNet(commands.Cog):
 
     async def get_new_articles(self):
         unprocessed_data = requests.get(GALNET_API).json()
-        latest_id = get_value('latestGalNet')
+        latest_id = int(get_value('latestGalNet'))
 
         processed_data = map(self.process_data, unprocessed_data)
 
         if latest_id:
             new_articles = list(filter(
-                lambda x: x['id'] > latest_id, processed_data))
+                lambda x: int(x['id']) > latest_id, processed_data))
             return {'articles': new_articles, 'current_id': latest_id}

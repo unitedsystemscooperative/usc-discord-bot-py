@@ -10,7 +10,7 @@ from discord_slash.client import SlashCommand
 from dotenv import load_dotenv
 
 from cogs import (AdminCommands, BGSCog, DevCommands, EducationalCommands,
-                  FunCommands, GalNet, InaraCommands, Powerplay, UtilCommands)
+                  FunCommands, GankCommands, GalNet, InaraCommands, Powerplay, UtilCommands)
 
 load_dotenv()
 
@@ -28,6 +28,7 @@ bot.add_cog(AdminCommands(bot))
 bot.add_cog(DevCommands(bot))
 bot.add_cog(EducationalCommands(bot))
 bot.add_cog(FunCommands(bot))
+bot.add_cog(GankCommands(bot))
 bot.add_cog(InaraCommands(bot))
 bot.add_cog(UtilCommands(bot))
 bot.add_cog(BGSCog(bot))

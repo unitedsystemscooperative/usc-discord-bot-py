@@ -3,6 +3,7 @@ from .commands.admin import AdminCommands
 from .commands.dev import DevCommands
 from .commands.education import EducationalCommands
 from .commands.fun import FunCommands
+from .commands.gank import GankCommands
 from .commands.inara import InaraCommands
 from .commands.util import UtilCommands
 from .galnet import GalNet

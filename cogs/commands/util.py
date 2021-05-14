@@ -26,10 +26,10 @@ class UtilCommands(commands.Cog):
                             name='viewEmbedSource',
                             description='Displays the embed source of a specific message',
                             guild_ids=guild_ids,
-                            options=[create_option(name='messageID', description='ID of the message', option_type=3, required=True),
-                                     create_option(name='channel', description='Channel the message was in', option_type=7, required=True)])
-    async def _view_embed_source(self, ctx: SlashContext, messageID: int, channel: discord.TextChannel):
-        message: Message = await channel.fetch_message(messageID)
+                            options=[create_option(name='messageid', description='ID of the message', option_type=3, required=True),
+                                     create_option(name='channelid', description='Channel the message was in', option_type=7, required=True)])
+    async def _view_embed_source(self, ctx: SlashContext, messageid: int, channelid: discord.TextChannel):
+        message: Message = await channelid.fetch_message(messageid)
         embeds: list[Embed] = message.embeds
         channel_to_respond_in: TextChannel = self.bot.get_channel(
             ctx.channel_id)
@@ -44,11 +44,11 @@ class UtilCommands(commands.Cog):
         else:
             await ctx.send('No embeds found', hidden=True)
 
-    @cog_ext.cog_subcommand(base="util", name="poll_show",
-                            description="Shows the results of a poll", guild_ids=guild_ids,
-                            options=[create_option(name='messageID', description='ID of the message', option_type=3, required=True),
-                                     create_option(name='channel', description='Channel the message was in', option_type=7, required=True)])
-    async def _poll_show(self, ctx: SlashContext, messageId: int, channel: discord.TextChannel):
-        message: Message = await channel.fetch_message(messageId)
-        embeds: list[Embed] = message.embeds
-        reactions: list[Reaction] = message.reactions
+    # @cog_ext.cog_subcommand(base="util", name="poll_show",
+    #                         description="Shows the results of a poll", guild_ids=guild_ids,
+    #                         options=[create_option(name='messageID', description='ID of the message', option_type=3, required=True),
+    #                                  create_option(name='channel', description='Channel the message was in', option_type=7, required=True)])
+    # async def _poll_show(self, ctx: SlashContext, messageId: int, channel: discord.TextChannel):
+    #     message: Message = await channel.fetch_message(messageId)
+    #     embeds: list[Embed] = message.embeds
+    #     reactions: list[Reaction] = message.reactions
